@@ -7,7 +7,9 @@ ser = serial.Serial(
 	baudrate=9600,
 	parity=serial.PARITY_ODD,
 	stopbits=serial.STOPBITS_ONE,
-	bytesize=serial.SEVENBITS
+	bytesize=serial.SEVENBITS,
+	rtscts=False
+
 )
 
 #ser.open()
