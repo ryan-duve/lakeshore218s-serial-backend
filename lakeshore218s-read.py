@@ -4,6 +4,7 @@
 import serial
 import sys
 import mysql.connector
+import thread,time
 
 ser = serial.Serial('/dev/ttyS0',
 	 9600,
@@ -11,13 +12,25 @@ ser = serial.Serial('/dev/ttyS0',
 	 rtscts=False,
 	 bytesize=serial.SEVENBITS,
 	 stopbits=serial.STOPBITS_ONE,
-	 timeout=5,
+	 timeout=0,
 	 xonxoff=True,
 	 dsrdtr=False)
 
 ser.write("KRDG? 0\r\n")
-
 print(ser.read(64))
+
+#**********
+#loops
+
+while True:
+	data=ser.read(ser.inWaiting())
+	if len(data)>0:
+		print 'Got:',data
+	time.sleep(1)
+	ser.write("KRDG? 0\r\n")
+	print 'not blocked'
+
+#**********
 
 #mysql database stuff
 
