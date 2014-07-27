@@ -25,8 +25,6 @@ print(ser.read(64))
 with open ("password", "r") as myfile:
     password=myfile.read().replace('\n', '')
 
-
-
 #http://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html
 config={
 	'user':'uva_remote',
@@ -38,10 +36,10 @@ config={
 cnx = mysql.connector.connect(**config)
 cur = cnx.cursor()
 
-query = "INSERT INTO usb1608g (device, raw_reading, measurement_reading) VALUES (%s,%s,%s)"
-data = ('test',1.0,2.0)
+query = "INSERT INTO lakeshore218s1 (device, raw_reading) VALUES (%s,%s)"
+data = [('test1',1.0),('test2',2.0)]
 
-cur.execute(query,data)
+cur.executemany(query,data)
 cnx.commit()
 
 cur.close()
