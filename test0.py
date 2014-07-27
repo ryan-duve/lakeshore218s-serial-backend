@@ -12,6 +12,6 @@ ser = serial.Serial('/dev/ttyS0',
 
 ser.write("KRDG? 0\r\n")
 
-print(ser.read(23))
+print(ser.read(100))
 
 ser.close()
