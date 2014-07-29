@@ -21,14 +21,18 @@ print(ser.read(64))
 
 #**********
 #loops
+print "Reading temperatures: press Ctrl+C to stop"
 
-while True:
-	data=ser.read(ser.inWaiting())
-	if len(data)>0:
-		print 'Got:',data
-	time.sleep(1)
-	ser.write("KRDG? 0\r\n")
-	print 'not blocked'
+try:
+	while True:
+		data=ser.read(ser.inWaiting())
+		if len(data)>0:
+			print data
+		time.sleep(1)
+		ser.write("KRDG? 0\r\n")
+		#print 'not blocked'
+except KeyboardInterrupt:
+	print "\nStopping data acquistion"
 
 #**********
 
