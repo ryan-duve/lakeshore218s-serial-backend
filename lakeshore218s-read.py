@@ -1,5 +1,7 @@
 #!/usr/bin/python
+
 #lakeshore218s-read.py
+#reads temps from Lakeshore 218s and writes to MySQL database
 
 import sys
 import thread,time
