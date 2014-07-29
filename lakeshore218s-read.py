@@ -5,6 +5,7 @@ import serial
 import sys
 import mysql.connector
 import thread,time
+import re
 
 ser = serial.Serial('/dev/ttyS0',
 	 9600,
@@ -21,16 +22,26 @@ print(ser.read(64))
 
 #**********
 #loops
+#http://ubuntuforums.org/showthread.php?t=1514035#post_9488318
 print "Reading temperatures: press Ctrl+C to stop"
 
 try:
 	while True:
 		data=ser.read(ser.inWaiting())
+
 		if len(data)>0:
-			print data
+			#strip non-alphanumerics
+			data=re.sub(r'\+', '',data)
+
+			temps = data.split(",")
+
+			sepSi = temps[0]
+			evapSi = temps[1]
+			mcSi = temps[2]
+
+			print sepSi, evapSi, mcSi
 		time.sleep(1)
 		ser.write("KRDG? 0\r\n")
-		#print 'not blocked'
 except KeyboardInterrupt:
 	print "\nStopping data acquistion"
 
