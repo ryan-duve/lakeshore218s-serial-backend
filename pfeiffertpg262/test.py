@@ -16,11 +16,11 @@ print "Reading pressures: press Ctrl+C to stop"
 #http://ubuntuforums.org/showthread.php?t=1514035#post_9488318
 try:
 	while True:
-		data, _ = tpg.pressure_gauge(1)
+		data = tpg.pressure_gauges()
 
 		if data>0:
 			#writeInstruments(data,password,cur,cnx)
-			print 'data=',data;
+			print 'IVC=',data[0],'OVC=',data[2]
 
 		time.sleep(1)
 except KeyboardInterrupt:
