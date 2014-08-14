@@ -19,8 +19,7 @@ try:
 		data = tpg.pressure_gauges()
 
 		if data>0:
-			#writeInstruments(data,password,cur,cnx)
-			print 'IVC=',data[0],'OVC=',data[2]
+			writeInstruments(data,password,cur,cnx)
 
 		time.sleep(1)
 except KeyboardInterrupt:
