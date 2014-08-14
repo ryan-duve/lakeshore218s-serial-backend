@@ -16,10 +16,10 @@ try:
 
 		if len(data)>0:
 			#writeInstruments(data,password,cur,cnx)
-			print data;
+			print 'len(data)=',len(data);
 
 		time.sleep(1)
-		ser.write("KRDG? 0\r\n")
+		ser.write("PR1\r\n")
 except KeyboardInterrupt:
 	print "\nStopping data acquistion"
 

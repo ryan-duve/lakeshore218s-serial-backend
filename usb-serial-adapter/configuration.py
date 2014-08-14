@@ -21,12 +21,12 @@ config={
 #http://pyserial.sourceforge.net/pyserial_api.html
 ser = serial.Serial('/dev/ttyUSB0',
          9600,
-         #parity=serial.PARITY_ODD,
+         parity=serial.PARITY_NONE,
          rtscts=False,
          bytesize=serial.EIGHTBITS,
          stopbits=serial.STOPBITS_ONE,
          timeout=0,
-         xonxoff=True,
+         xonxoff=False,
          dsrdtr=False)
 
 #start mysql
