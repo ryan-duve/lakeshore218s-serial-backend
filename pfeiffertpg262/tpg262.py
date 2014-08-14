@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-#pfeiffertpg262.py
-#reads temps from Pfeiffer Dual Gauge and writes to MySQL database
+#tpg262.py
+#reads pressures from Pfeiffer Dual Gauge and writes to MySQL database
 
 import sys
 import thread,time

@@ -1,8 +1,8 @@
-#writeTemps.py
-#writeTemps takes in data string returned by module and writes temperatures to database
+#writeInstruments.py
+#writeInstruments takes in data string returned by module and writes response to database
 
 import re
-def writeTemps(data,password,cur,cnx):
+def writeInstruments(data,password,cur,cnx):
         #clean string and break into float array
         data=re.sub(r'\+', '',data)
         instruments = data.split(",")
