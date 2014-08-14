@@ -1,18 +1,20 @@
 #writeInstruments.py
-#writeInstruments takes in data string returned by module and writes response to database
+#writeInstruments takes in data tuple returned by module and writes response to database
 
 import re
 def writeInstruments(data,password,cur,cnx):
         #clean string and break into float array
-        data=re.sub(r'\+', '',data)
-        instruments = data.split(",")
+	#data[0]: gauge 1, value
+	#data[1][0]: gauge 1, measurement status
+	#data[2]: gauge 2, value
+	#data[3][0]: gauge 2, measurement status
 
-        query = "INSERT INTO pfeiffertpg262 (device, raw_reading) VALUES (%s,%s)"
+        query = "INSERT INTO pfeiffertpg262 (device, raw_reading,meas_status) VALUES (%s,%s,%s)"
 
 	#instruments[0] = OVC pressure
 	#instruments[1] = IVC pressure
 
-        entries= [('OVCpressure',instruments[0]),('IVCpressure',instruments[1])]
+        entries= [('IVCpressure',data[0],data[1][0]),('OVCpressure',data[2],data[3][0])]
 
         cur.executemany(query,entries)
         cnx.commit()
