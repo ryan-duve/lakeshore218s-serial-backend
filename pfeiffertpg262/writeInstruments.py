@@ -14,7 +14,7 @@ def writeInstruments(data,password,cur,cnx):
 	#instruments[0] = OVC pressure
 	#instruments[1] = IVC pressure
 
-        entries= [('IVCpressure',data[0],data[0]),('OVCpressure',data[2],data[2])]
+        entries= [('IVCPressure',data[0],data[0]),('OVCPressure',data[2],data[2])]
 
         cur.executemany(query,entries)
         cnx.commit()
