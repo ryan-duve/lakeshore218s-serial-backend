@@ -9,12 +9,12 @@ def writeInstruments(data,password,cur,cnx):
 	#data[2]: gauge 2, value
 	#data[3][0]: gauge 2, measurement status
 
-        query = "INSERT INTO pfeiffertpg262 (device, raw_reading,meas_status) VALUES (%s,%s,%s)"
+        query = "INSERT INTO slowcontrolreadings (device, raw_reading,measurement_reading) VALUES (%s,%s,%s)"
 
 	#instruments[0] = OVC pressure
 	#instruments[1] = IVC pressure
 
-        entries= [('IVCpressure',data[0],data[1][0]),('OVCpressure',data[2],data[3][0])]
+        entries= [('IVCpressure',data[0],data[0]),('OVCpressure',data[2],data[2])]
 
         cur.executemany(query,entries)
         cnx.commit()
