@@ -13,7 +13,7 @@ with open ("password", "r") as myfile:
 config={
         'user':'uva_remote',
         'password':password,
-        'host':'hfgx620.tunl.daq',
+        'host':'hicontrol.tunl.daq',
         'database':'slowcontrols',
 }
 
