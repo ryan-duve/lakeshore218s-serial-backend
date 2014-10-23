@@ -7,12 +7,12 @@ def writeTemps(data,password,cur,cnx):
         data=re.sub(r'\+', '',data)
         temps = data.split(",")
 
-        query = "INSERT INTO lakeshore218s1 (device, raw_reading) VALUES (%s,%s)"
+        query = "INSERT INTO slowcontrolreadings (device, raw_reading, measurement_reading) VALUES (%s,%s,%s)"
 
 	#temps[0] = separator Si diode
 	#temps[1] = evaporator Si diode
 	#temps[2] = mixing chamber Si diode
-        entries= [('sepSi',temps[0]),('evapSi',temps[1]),('mcSi',temps[2])]
+        entries= [('sepSi',temps[0],temps[0]),('evapSi',temps[1],temps[1]),('mcSi',temps[2],temps[2])]
 
         cur.executemany(query,entries)
         cnx.commit()
