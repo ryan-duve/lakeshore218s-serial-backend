@@ -12,7 +12,7 @@ def writeTemps(data,password,cur,cnx):
 	#temps[0] = separator Si diode
 	#temps[1] = evaporator Si diode
 	#temps[2] = mixing chamber Si diode
-        entries= [('sepSi',temps[0],temps[0]),('evapSi',temps[1],temps[1]),('mcSi',temps[2],temps[2])]
+        entries= [('sepSiHi',temps[0],temps[0]),('sepSiLo',temps[1],temps[1]),('mcSi',temps[2],temps[2])]
 
         cur.executemany(query,entries)
         cnx.commit()
