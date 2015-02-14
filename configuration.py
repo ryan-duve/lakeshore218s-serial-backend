@@ -28,6 +28,17 @@ ser = serial.Serial('/dev/ttyS0',
          xonxoff=True,
          dsrdtr=False)
 
+#start serial2 (Lakeshore 2)
+ser2 = serial.Serial('/dev/ttyUSB1',
+         9600,
+         parity=serial.PARITY_ODD,
+         rtscts=False,
+         bytesize=serial.SEVENBITS,
+         stopbits=serial.STOPBITS_ONE,
+         timeout=0,
+         xonxoff=True,
+         dsrdtr=False)
+
 #start mysql
 cnx = mysql.connector.connect(**config) 
 cur = cnx.cursor() 

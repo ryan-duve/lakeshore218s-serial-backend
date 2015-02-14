@@ -9,10 +9,12 @@ def writeTemps(data,password,cur,cnx):
 
         query = "INSERT INTO slowcontrolreadings (device, raw_reading, measurement_reading) VALUES (%s,%s,%s)"
 
-	#temps[0] = separator Si diode
-	#temps[1] = evaporator Si diode
+	#temps is a comma delimited string of 16 temperatures (most of which are zero)
+	#temps[0] = sep HI Si diode
+	#temps[1] = sep LO Si diode
 	#temps[2] = mixing chamber Si diode
-        entries= [('sepSiHi',temps[0],temps[0]),('sepSiLo',temps[1],temps[1]),('mcSi',temps[2],temps[2])]
+	#temps[8] = evap Si diode
+        entries= [('sepSiHi',temps[0],temps[0]),('sepSiLo',temps[1],temps[1]),('mcSi',temps[2],temps[2]),('evapSi',temps[8],temps[8])]
 
         cur.executemany(query,entries)
         cnx.commit()
