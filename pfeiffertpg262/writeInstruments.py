@@ -9,7 +9,7 @@ def writeInstruments(data,password,cur,cnx):
 	#data[2]: gauge 2, value
 	#data[3][0]: gauge 2, measurement status
 
-        query = "INSERT INTO slowcontrolreadings (device, raw_reading,measurement_reading) VALUES (%s,%s,%s)"
+        query = "INSERT INTO alcatelasm120h (device, raw_reading,measurement_reading) VALUES (%s,%s,%s)"
 
 	#instruments[0] = OVC pressure
 	#instruments[1] = IVC pressure
