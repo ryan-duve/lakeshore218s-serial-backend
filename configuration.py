@@ -29,7 +29,7 @@ ser = serial.Serial('/dev/ttyS0',
          dsrdtr=False)
 
 #start serial2 (Lakeshore 2)
-ser2 = serial.Serial('/dev/ttyUSB1',
+ser2 = serial.Serial('/dev/ttyUSB0',
          9600,
          parity=serial.PARITY_ODD,
          rtscts=False,
